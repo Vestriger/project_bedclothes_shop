@@ -1,1 +1,1 @@
-# project-bedclothes-shop
+# Интернет-магазин постельного белья на python
