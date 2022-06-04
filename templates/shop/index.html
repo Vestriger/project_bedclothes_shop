@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Hello</h1>
+   <div class="shop_list">
+    {% for p in products %}
+            <div class="p_card">
+                <img src="{{ p.img.url }}" class="p_img">
+                <div class="p_title">
+                    <a href="{{ p.get_absolute_url }}"><h3>{{ p.name }}</h3></a>
+                    <h5>{{ p.description }}</h5>
+                </div>
+                <div class="p_bottom">
+                    <div class="p_available">
+                        {% if p.available %}
+                            <h5>В наличии</h5>
+                            {% else %}
+                            <h5>Нет в наличии</h5>
+                        {% endif %}
+                    </div>
+                    <div class="p_bottom_bottom">
+                        <h6 style="margin: 0;">{{ p.price }} руб.</h6>
+                        <button class="btn btn-success">Выбрать</button>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+   </div>
 {% endblock %}

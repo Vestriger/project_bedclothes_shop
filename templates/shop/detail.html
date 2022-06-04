@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="detail">
+        <div class="detail_top">
+          <h2>{{ product.name }}</h2>
+            <h3>{{ product.description }}</h3>
+        </div>
+        <div class="detail_bottom">
+            <div class="detail_bottom_left">
+                <img src="{{ product.img.url }}" class="detail_img">
+            </div>
+            <div class="detail_bottom_middle">
+                <h5>Размер: {{ product.size }}</h5>
+                <h5>Материал: {{ product.material }}</h5>
+                <h5>Цвет: {{ product.color }}</h5>
+            </div>
+            <div class="detail_bottom_right">
+                <div class="detail_bottom_right_container">
+                    <h3 style="padding-left: 5px;">{{ product.price }} руб.</h3>
+                    <div class="detail_container_bottom">
+                            {% if p.available %}
+                            <h5 style="margin: 20px 0 10px 5px;">В наличии</h5>
+                            {% else %}
+                            <h5 style="margin: 20px 0 10px 5px;">Нет в наличии</h5>
+                            {% endif %}
+                    <button class="btn btn-success">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

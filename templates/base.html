@@ -11,7 +11,67 @@
     <title>Shop</title>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div class="main">
+        <header>
+            <div class="title">
+                <div class="left">
+                    <h1 style="color: #E3C565">Golden Stitch</h1>
+                    <div class="location">
+                        <img src="{% static 'img/location.svg' %}" alt="" style="height: 20px; width: 20px; margin: 0 5px 0 30px ">
+                        <h4 style="margin-bottom: 0;">Минск</h4>
+                    </div>
+                </div>
+                <div class="right">
+                    <h3 style="margin: 0 20px 0 0;">8-800-555-35-35</h3>
+                    <div class="buttons">
+                        <button class="btn btn-success">login</button>
+                        <button class="btn btn-success">sign up</button>
+                        <button class="btn btn-warning">
+                            <img src="{% static 'img/cart.svg' %}" style="width: 20px;height: 20px">
+                            12
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                {% for c in categories %}
+                    <div class="category_name">
+                        <a href="{{ c.get_absolute_url }}"><h5 {% if category.slug == c.slug %} style="color: #DFC98A" {% endif %}>{{ c.name }}</h5></a>
+                    </div>
+                {% endfor %}
+                <a href="{% url "shop:shop_list" %}"><h5>Все</h5></a>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer class="bg-light text-center text-lg-start" style="margin-top: 20px;">
+      <div class="container p-4 pb-0">
+        <form action="">
+          <div class="row" style="display:flex;justify-content: center">
+            <div class="col-auto mb-4 mb-md-0">
+              <p class="pt-2">
+                <strong>Sign up for our newsletter</strong>
+              </p>
+            </div>
+            <div class="col-md-5 col-12 mb-4 mb-md-0">
+              <div class="form-outline mb-4">
+                <input type="email" id="form5Example25" class="form-control" />
+                <label class="form-label" for="form5Example25">Email address</label>
+              </div>
+            </div>
+            <div class="col-auto mb-4 mb-md-0">
+              <button type="submit" class="btn btn-primary mb-4">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://vk.com/popka_ogyrca">Павел Геращенко</a>
+      </div>
+    </footer>
 </body>
 </html>
