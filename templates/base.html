@@ -25,11 +25,21 @@
                     <h3 style="margin: 0 20px 0 0;">8-800-555-35-35</h3>
                     <div class="buttons">
                         <button class="btn btn-success">login</button>
-                        <button class="btn btn-success">sign up</button>
-                        <button class="btn btn-warning">
-                            <img src="{% static 'img/cart.svg' %}" style="width: 20px;height: 20px">
-                            12
-                        </button>
+                        {% with total_items=cart|length %}
+                            {% if cart|length > 0 %}
+                                <a href="{% url "cart:show_cart" %}">
+                                    <button class="btn btn-warning">
+                                        <img src="{% static 'img/cart.svg' %}" style="width: 20px;height: 20px">
+                                        {{ total_items }}
+                                    </button>
+                                </a>
+                            {% else %}
+                                <button class="btn btn-warning">
+                                    <img src="{% static 'img/cart.svg' %}" style="width: 20px;height: 20px">
+                                    Корзина пуста
+                                </button>
+                            {% endif %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>

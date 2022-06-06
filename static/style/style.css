@@ -146,7 +146,7 @@ a:hover{
 }
 
 .detail_bottom_middle{
-    width: 500px;
+    width: 400px;
     padding-top: 30px;
 }
 
@@ -154,4 +154,41 @@ a:hover{
     border: 2px solid #DFC98A;
     border-radius: 30px;
     padding: 30px;
+}
+
+.cart_item{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 20px 0;
+
+}
+
+.cart{
+    margin: 20px 0;
+}
+
+.total{
+    margin-top: 20px;
+    text-align: right;
+}
+
+.p_bottom_bottom{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+}
+
+.p_form{
+    margin-bottom: 5px;
+}
+
+.p_price{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }

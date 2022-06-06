@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Корзина</h1>
+  <div class="cart">
+      {% for item in cart %}
+            {% with product=item.product %}
+                <div class="cart_item">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="{{ product.img.url }}" class="p_img" style="width: 150px; height: 150px">
+                    </a>
+                    <h3 style="width: 40%">{{ product.name }} <br> {{ product.description }} <br> {{ product.size }}</h3>
+                    <h4>Цена: {{ item.value }} по {{ item.price }} руб. = {{ item.total_price }} руб.</h4>
+                    <a href="{% url "cart:cart_remove" product.id%}"><h5>Удалить</h5></a>
+                </div>
+            {% endwith %}
+        {% endfor %}
+      <div class="total">
+          <h4>Итого:</h4>
+          <h4>{{ cart.get_total_price }} руб.</h4>
+      </div>
+  </div>
+{% endblock %}

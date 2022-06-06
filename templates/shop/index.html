@@ -6,20 +6,30 @@
             <div class="p_card">
                 <img src="{{ p.img.url }}" class="p_img">
                 <div class="p_title">
-                    <a href="{{ p.get_absolute_url }}"><h3>{{ p.name }}</h3></a>
-                    <h5>{{ p.description }}</h5>
+                    <a href="{{ p.get_absolute_url }}"><h4>{{ p.name }}</h4></a>
+                    <h6>{{ p.description }}</h6>
                 </div>
                 <div class="p_bottom">
-                    <div class="p_available">
-                        {% if p.available %}
-                            <h5>В наличии</h5>
-                            {% else %}
-                            <h5>Нет в наличии</h5>
-                        {% endif %}
-                    </div>
                     <div class="p_bottom_bottom">
-                        <h6 style="margin: 0;">{{ p.price }} руб.</h6>
-                        <button class="btn btn-success">Выбрать</button>
+                        <div class="p_price">
+                            <div class="p_available">
+                                {% if p.available %}
+                                    <h5 style="color: darkseagreen">В наличии</h5>
+                                    {% else %}
+                                    <h5 style="color: dimgray">Нет в наличии</h5>
+                                {% endif %}
+                            </div>
+                            <h6 style="margin: 15px 0 0;">{{ p.price }} руб.</h6>
+                        </div>
+                        {% if p.available %}
+                            <form action="{% url 'cart:cart_add' p.id %}" method="post" style="display:flex;flex-direction: column">
+                                {% csrf_token %}
+                                <div class="p_form"><h6>{{ cart_product_form}}</h6></div>
+                                <input class="btn btn-success" type="submit" value="В корзину" style="border: 1px solid darkseagreen">
+                            </form>
+                            {% else %}
+                            <button class="btn" style="border: 1px solid dimgray; margin-top: 40px;">В корзину</button>
+                        {% endif %}
                     </div>
                 </div>
             </div>

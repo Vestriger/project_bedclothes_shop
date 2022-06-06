@@ -18,12 +18,17 @@
                 <div class="detail_bottom_right_container">
                     <h3 style="padding-left: 5px;">{{ product.price }} руб.</h3>
                     <div class="detail_container_bottom">
-                            {% if p.available %}
+                            {% if product.available %}
                             <h5 style="margin: 20px 0 10px 5px;">В наличии</h5>
+                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                {% csrf_token %}
+                                {{ cart_product_form }}
+                                <input class="btn btn-success" type="submit" value="Добавить в корзину">
+                            </form>
                             {% else %}
                             <h5 style="margin: 20px 0 10px 5px;">Нет в наличии</h5>
+                            <button class="btn" style="border: 1px solid dimgray;">Добавить в корзину</button>
                             {% endif %}
-                    <button class="btn btn-success">Добавить в корзину</button>
                     </div>
                 </div>
             </div>
