@@ -84,7 +84,10 @@ a:hover{
     color: #DFC98A;
 }
 
-.category_name{
+.category{
+    border-top: 1px solid  #E3C565;
+    border-bottom: 1px solid  #E3C565;
+    padding: 10px 20px 6px;
 }
 
 .p_img{
