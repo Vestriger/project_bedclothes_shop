@@ -25,7 +25,7 @@
                             <form action="{% url 'cart:cart_add' p.id %}" method="post" style="display:flex;flex-direction: column">
                                 {% csrf_token %}
                                 <div class="p_form"><h6>{{ cart_product_form}}</h6></div>
-                                <input class="btn btn-success" type="submit" value="В корзину" style="border: 1px solid darkseagreen">
+                                <input class="btn btn-success" type="submit" value="В корзину" style="border: 1px solid green">
                             </form>
                             {% else %}
                             <button class="btn" style="border: 1px solid dimgray; margin-top: 40px;">В корзину</button>

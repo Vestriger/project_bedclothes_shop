@@ -15,7 +15,7 @@
         <header>
             <div class="title">
                 <div class="left">
-                    <h1 style="color: #E3C565">Golden Stitch</h1>
+                    <a href="{% url "shop:shop_list" %}"><h1 style="color: #E3C565">Golden Stitch</h1></a>
                     <div class="location">
                         <img src="{% static 'img/location.svg' %}" alt="" style="height: 20px; width: 20px; margin: 0 5px 0 30px ">
                         <h4 style="margin-bottom: 0;">Минск</h4>
@@ -24,11 +24,17 @@
                 <div class="right">
                     <h3 style="margin: 0 20px 0 0;">8-800-555-35-35</h3>
                     <div class="buttons">
-                        <button class="btn btn-success">login</button>
+                        {% if request.user.is_authenticated %}
+                            <h5>Добро пожаловать, {{ user.username }}</h5>
+                            <a href="{% url 'shop:logout' %}"><button class="btn success">LogOut</button></a>
+                        {% else %}
+                            <a href="{% url 'shop:login' %}"><button class="btn btn-success">Login</button></a>
+                            <a href="{% url 'shop:register' %}"><button class="btn btn-success">SignUp</button></a>
+                        {% endif %}
                         {% with total_items=cart|length %}
                             {% if cart|length > 0 %}
                                 <a href="{% url "cart:show_cart" %}">
-                                    <button class="btn btn-warning">
+                                    <button class="btn btn-warning" style="margin-left: 95px">
                                         <img src="{% static 'img/cart.svg' %}" style="width: 20px;height: 20px">
                                         {{ total_items }}
                                     </button>
