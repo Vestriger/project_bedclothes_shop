@@ -5,4 +5,203 @@
         {{ form.as_p }}
         <button class="btn btn-success" type="submit">Войти</button>
     </form>
+    <style>
+    body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    width: 15px;
+    background-color: beige;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #efd695;
+    border-radius: 30px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #DFC98A;
+}
+
+footer {
+  width: 100%;
+}
+.main{
+    margin-right: auto;
+    margin-left: auto;
+    width: 1170px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+}
+
+.right{
+    display: flex;
+    align-items: center;
+}
+
+.location{
+    display: flex;
+    align-items: center;
+}
+
+.btn{
+    background-color: beige;
+    border: none;
+    font-weight: 600;
+    border-radius: 30px;
+    color: black;
+}
+
+.btn:hover{
+    background-color: #DFC98A;
+    box-shadow: none;
+}
+.btn:focus{
+    background-color: #DFC98A;
+    border: none;
+    box-shadow: none;
+}
+
+.category{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: #DFC98A;
+}
+
+.category{
+    border-top: 1px solid  #E3C565;
+    border-bottom: 1px solid  #E3C565;
+    padding: 10px 20px 6px;
+}
+
+.p_img{
+    width: 250px;
+    height: 250px;
+    border-radius: 30px;
+}
+
+.p_card{
+    margin-top: 20px;
+    margin-right: 2px;
+    border-radius: 30px;
+    padding: 20px;
+    width: 290px;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid #fff;
+    transition: 1s;
+
+}
+
+.p_card:hover{
+    border: 2px solid #DFC98A;
+
+}
+
+
+.p_bottom_bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop_list{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.detail{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.detail_bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.detail_img{
+    width: 350px;
+    height: 350px;
+    border-radius: 30px;
+}
+
+.detail_bottom_middle{
+    width: 400px;
+    padding-top: 30px;
+}
+
+.detail_bottom_right_container{
+    border: 2px solid #DFC98A;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.cart_item{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 20px 0;
+
+}
+
+.cart{
+    margin: 20px 0;
+}
+
+.total{
+    margin-top: 20px;
+    text-align: right;
+}
+
+.p_bottom_bottom{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+}
+
+.p_form{
+    margin-bottom: 5px;
+}
+
+.p_price{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+    </style>
 {% endblock %}

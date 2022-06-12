@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.db import models
 from django.urls import reverse
 
@@ -22,7 +23,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     name = models.CharField('Название', max_length=80, db_index=True)
     slug = models.CharField(max_length=100, db_index=True, unique=True)
-    img = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
+    img = CloudinaryField('image')
     description = models.CharField('Описание', max_length=200)
     price = models.IntegerField('Цена')
     size = models.CharField('Размер', max_length=20, db_index=True, default="Euro(200x200)")
