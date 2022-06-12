@@ -1,9 +1,11 @@
+from asgiref.sync import sync_to_async
+import asyncio
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import FormView, CreateView
+from django.views.generic import FormView
 
 from cart.forms import CartAddProductForm
 from .models import Product, Category
@@ -11,8 +13,8 @@ from .models import Product, Category
 
 def shop_list(request, category_slug=None):
     category = None
-    categories = Category.objects.all()
-    products = Product.objects.all()
+    categories = asyncio.run(get_categories_async())
+    products = asyncio.run(get_products_async())
     cart_product_form = CartAddProductForm()
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -28,8 +30,8 @@ def shop_list(request, category_slug=None):
 
 
 def shop_detail(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug)
-    categories = Category.objects.all()
+    product = asyncio.run(get_product_by_id_async(id, slug))
+    categories = asyncio.run(get_categories_async())
     cart_product_form = CartAddProductForm()
     data = {
         'product': product,
@@ -42,7 +44,7 @@ def shop_detail(request, id, slug):
 class RegisterUserForm(FormView):
     form_class = UserCreationForm
     template_name = "shop/register.html"
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('shop:login')
     categories = Category.objects.all()
     extra_context = {'categories': categories}
 
@@ -70,6 +72,24 @@ class LoginUserForm(LoginView):
     def form_invalid(self, form):
         return super(LoginUserForm, self).form_invalid(form)
 
+
 def logout_user(request):
     logout(request)
     return redirect('shop:shop_list')
+
+
+@sync_to_async
+def get_product_by_id_async(pk, slug):
+    product = Product.objects.get(pk=pk, slug=slug)
+    return product
+
+
+@sync_to_async
+def get_products_async():
+    products = Product.objects.all()
+    return products
+
+@sync_to_async
+def get_categories_async():
+    categories = Category.objects.all()
+    return categories

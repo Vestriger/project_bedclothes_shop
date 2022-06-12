@@ -17,8 +17,7 @@
                 <div class="left">
                     <a href="{% url "shop:shop_list" %}"><h1 style="color: #E3C565">Golden Stitch</h1></a>
                     <div class="location">
-                        <img src="{% static 'img/location.svg' %}" alt="" style="height: 20px; width: 20px; margin: 0 5px 0 30px ">
-                        <h4 style="margin-bottom: 0;">Минск</h4>
+                        <h4 style="margin-bottom: 0; margin-left: 40px">Минск</h4>
                     </div>
                 </div>
                 <div class="right">
@@ -34,14 +33,12 @@
                         {% with total_items=cart|length %}
                             {% if cart|length > 0 %}
                                 <a href="{% url "cart:show_cart" %}">
-                                    <button class="btn btn-warning" style="margin-left: 95px">
-                                        <img src="{% static 'img/cart.svg' %}" style="width: 20px;height: 20px">
+                                    <button class="btn btn-warning" {% if request.user.is_authenticated %}style="margin-left: 95px"{% endif %}>
                                         {{ total_items }}
                                     </button>
                                 </a>
                             {% else %}
                                 <button class="btn btn-warning">
-                                    <img src="{% static 'img/cart.svg' %}" style="width: 20px;height: 20px">
                                     Корзина пуста
                                 </button>
                             {% endif %}
